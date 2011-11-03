@@ -1,0 +1,84 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Auto-height Textarea</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name='HandheldFriendly' content='True'>
+<meta name='MobileOptimized' content='320'>
+<meta name='format-detection' content='telephone=no'>
+<meta name='viewport' content='width=device-width, minimum-scale=1.0, maximum-scale=1.0'>
+<meta http-equiv='cleartype' content='on'>
+<link rel='stylesheet' href='style.css'>
+<style>
+body {
+  background:#F7F9FA;
+}
+p {
+  color:#999;
+  font-size:11px;
+  margin:20px;
+  text-align:center;
+}
+
+#textarea-wrap {
+  background:#fff;
+  position:relative;
+  margin:20px;
+  border:1px #DADDE0 solid;
+}
+#textarea-wrap textarea,
+#textarea-wrap pre {
+  margin: 0;
+  padding: 10px;
+  outline: 0;
+  border: 0;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+      -ms-box-sizing: border-box;
+          box-sizing: border-box;
+  background:transparent;
+  display:block;
+  font-family:sans-serif;
+  line-height:1.4;
+}
+#textarea-wrap textarea {
+  position:absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  resize:none;
+}
+#textarea-wrap pre {
+  min-height:100px;
+  visibility:hidden;
+}
+</style>
+</head>
+<body>
+
+
+<div id='textarea-wrap'>
+
+  <textarea placeholder='Go ahead, type away...'></textarea>
+  
+  <pre></pre>
+
+</div>
+
+
+<p>This is my attempt at the lightest weight autoheight textarea on mobile webkit. It doesn't poll and primarily relies on CSS heights. Only uses a few lines of javascript.</p>
+
+
+<script>
+
+var wrap = document.getElementById('textarea-wrap'),
+    ta = wrap.getElementsByTagName('textarea')[0],
+    pre = wrap.getElementsByTagName('pre')[0];
+
+ta.oninput = function(e) { pre.innerHTML = e.target.value + 8 }
+
+</script>
+
+</body>
+</html>
